@@ -1,4 +1,6 @@
 import 'package:belajar_flutter_ppkd/day_5/scaffold.dart';
+import 'package:belajar_flutter_ppkd/day_7/gambar.dart';
+import 'package:belajar_flutter_ppkd/tugas2.dart/tugas2.dart';
 import 'package:belajar_flutter_ppkd/tugas_1/tugas_1.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Tugas1Flutter(),
+      home: Tugas2Flutter(),
     );
   }
 }
