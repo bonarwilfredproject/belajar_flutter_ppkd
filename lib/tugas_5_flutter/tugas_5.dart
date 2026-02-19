@@ -1,13 +1,14 @@
+import 'package:belajar_flutter_ppkd/tugas_5_flutter/tugas_5_gesture_detector.dart';
 import 'package:flutter/material.dart';
 
-class ButtonTampilkanProfil extends StatefulWidget {
-  const ButtonTampilkanProfil({super.key});
+class Tugas5Flutter extends StatefulWidget {
+  const Tugas5Flutter({super.key});
 
   @override
-  State<ButtonTampilkanProfil> createState() => _ButtonTampilkanProfilState();
+  State<Tugas5Flutter> createState() => _Tugas5FlutterState();
 }
 
-class _ButtonTampilkanProfilState extends State<ButtonTampilkanProfil> {
+class _Tugas5FlutterState extends State<Tugas5Flutter> {
   bool profilTampil = false;
   bool disukai = false;
   Color warnaTombol = Colors.red;
@@ -68,41 +69,67 @@ class _ButtonTampilkanProfilState extends State<ButtonTampilkanProfil> {
               print("Hai, InkWell berfungsi");
               setState(() {});
             },
-            child: Container(
-              color: Colors.amber,
-              height: 60,
-              width: 120,
-              child: Center(child: Text("Coba pencet ini")),
+            child: ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(60),
+              child: Container(
+                color: Colors.amber,
+                height: 60,
+                width: 120,
+                child: Center(child: Text("Coba pencet ini")),
+              ),
             ),
           ),
           if (tampilanInkWell) Text("Ini efek InkWell"),
 
           Text("${counter}", style: TextStyle(fontSize: 60)),
           //ini tombol untuk tap, double tap, dan long press
-          GestureDetector(
-            onTap: () {
-              counter++;
-              setState(() {});
-            },
-            onDoubleTap: () {
-              counter += 2;
-              setState(() {});
-            },
-            onLongPress: () {
-              counter += 3;
-              setState(() {});
-            },
-            child: Container(
-              width: 120,
-              height: 60,
-              color: Colors.cyanAccent,
-              child: Center(
-                child: Text(
-                  "1x tap +1; 2x tap +2; tekan lama +3",
-                  textAlign: TextAlign.center,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width: 12),
+              //button kurang
+              Expanded(
+                child: Tugas5GestureDetector(
+                  data: "Tombol Kurang",
+                  onDoubleTap: () {
+                    counter -= 2;
+                    setState(() {});
+                  },
+                  onTap: () {
+                    counter--;
+                    setState(() {});
+                  },
+                  onLongPress: () {
+                    setState(() {
+                      counter -= 3;
+                    });
+                  },
                 ),
               ),
-            ),
+              SizedBox(width: 12),
+              //button tambah
+              Expanded(
+                child: Tugas5GestureDetector(
+                  data: "Tombol Tambah",
+                  onDoubleTap: () {
+                    setState(() {
+                      counter += 2;
+                    });
+                  },
+                  onLongPress: () {
+                    setState(() {
+                      counter += 3;
+                    });
+                  },
+                  onTap: () {
+                    setState(() {
+                      counter++;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(width: 12),
+            ],
           ),
         ],
       ),
