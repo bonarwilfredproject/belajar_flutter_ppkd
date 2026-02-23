@@ -21,6 +21,7 @@ class _Tugas5FlutterState extends State<Tugas5Flutter> {
     return Scaffold(
       appBar: AppBar(title: Center(child: Text("Tugas 5 Flutter"))),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           //tombol untuk menampilkan profil
           Center(
@@ -52,6 +53,13 @@ class _Tugas5FlutterState extends State<Tugas5Flutter> {
           if (disukai) Text("Disukai!"),
           //tombol detail info
           TextButton(
+            style: TextButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadiusGeometry.circular(12),
+              ),
+              backgroundColor: Colors.blueGrey,
+              foregroundColor: Colors.white,
+            ),
             onPressed: () {
               detailInfo = !detailInfo;
               setState(() {});

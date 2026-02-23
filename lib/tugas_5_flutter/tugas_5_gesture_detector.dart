@@ -16,6 +16,9 @@ class Tugas5GestureDetector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
+      onDoubleTap: onDoubleTap,
+      onLongPress: onLongPress,
       child: ClipRRect(
         borderRadius: BorderRadiusGeometry.circular(12),
         child: Container(
@@ -25,9 +28,6 @@ class Tugas5GestureDetector extends StatelessWidget {
           child: Center(child: Text(data, textAlign: TextAlign.center)),
         ),
       ),
-      onTap: onTap,
-      onDoubleTap: onDoubleTap,
-      onLongPress: onLongPress,
     );
   }
 }
