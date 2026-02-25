@@ -9,12 +9,10 @@ import 'package:belajar_flutter_ppkd/tugas_5_flutter/tugas_5.dart';
 import 'package:belajar_flutter_ppkd/tugas_6/tugas_6_log_in_screen.dart';
 import 'package:belajar_flutter_ppkd/tugas_7/tugas_7.dart';
 import 'package:belajar_flutter_ppkd/tugas_8/tugas_8.dart';
+import 'package:belajar_flutter_ppkd/tugas_9/tugas_9_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized;
-  await initializeDateFormatting('id', null);
+void main() {
   runApp(const MyApp());
 }
 
@@ -44,7 +42,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Tugas8Flutter(),
+      home: Tugas9Screen(),
     );
   }
 }

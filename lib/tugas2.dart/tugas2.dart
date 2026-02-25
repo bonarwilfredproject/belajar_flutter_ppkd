@@ -79,6 +79,10 @@ class Tugas2Flutter extends StatelessWidget {
               Expanded(
                 child: Container(
                   height: 96,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(144),
+                    color: Color(0xFF424874),
+                  ),
                   child: Column(
                     children: [
                       Spacer(),
@@ -89,10 +93,6 @@ class Tugas2Flutter extends StatelessWidget {
                       ),
                       Spacer(),
                     ],
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(144),
-                    color: Color(0xFF424874),
                   ),
                 ),
               ),

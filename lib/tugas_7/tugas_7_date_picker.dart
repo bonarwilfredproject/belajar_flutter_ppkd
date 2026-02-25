@@ -31,7 +31,7 @@ class _Tugas7DatePickerState extends State<Tugas7DatePicker> {
           Text(
             selectedDate == null
                 ? "Tanggal Lahir: "
-                : "Tanggal Lahir: ${DateFormat("dd MMMM yyyy", "ID").format(selectedDate!)}",
+                : "Tanggal Lahir: ${DateFormat("dd MMMM yyyy", "id").format(selectedDate!)}",
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:belajar_flutter_ppkd/tugas_7/tugas_7.dart';
 import 'package:belajar_flutter_ppkd/tugas_8/tugas_8_tentang_aplikasi.dart';
 import 'package:flutter/material.dart';

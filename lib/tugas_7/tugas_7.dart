@@ -31,6 +31,7 @@ class _Tugas7FlutterState extends State<Tugas7Flutter> {
         title: Text("Tugas 7 Flutter"),
         backgroundColor: Colors.white,
       ),
+
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: ListView(
