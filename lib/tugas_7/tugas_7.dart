@@ -30,6 +30,25 @@ class _Tugas7FlutterState extends State<Tugas7Flutter> {
       appBar: AppBar(
         title: Text("Tugas 7 Flutter"),
         backgroundColor: Colors.white,
+        leading: Builder(
+          builder: (context) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(
+                  "https://i.pinimg.com/564x/6e/0f/05/6e0f057d6d82cb6a1f1054c2b3504f92.jpg",
+                ),
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      Scaffold.of(context).openDrawer();
+                    });
+                  },
+                ),
+              ),
+            );
+          },
+        ),
       ),
 
       drawer: Drawer(

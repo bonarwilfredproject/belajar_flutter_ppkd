@@ -3,6 +3,7 @@ import 'package:belajar_flutter_ppkd/day_7/gambar.dart';
 import 'package:belajar_flutter_ppkd/day_8/latihan.dart';
 import 'package:belajar_flutter_ppkd/tugas2.dart/tugas2.dart';
 import 'package:belajar_flutter_ppkd/tugas_1/tugas_1.dart';
+import 'package:belajar_flutter_ppkd/tugas_10/tugas_10_form.dart';
 import 'package:belajar_flutter_ppkd/tugas_3_flutter/tugas_3_flutter.dart';
 import 'package:belajar_flutter_ppkd/tugas_4_flutter/tugas_4_flutter.dart';
 import 'package:belajar_flutter_ppkd/tugas_5_flutter/tugas_5.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Tugas9Screen(),
+      home: Tugas10Form(),
     );
   }
 }
