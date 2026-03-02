@@ -30,6 +30,12 @@ Container eventTile(EventModel? items) {
             Expanded(flex: 4, child: Text(items.id.toString())),
           ],
         ),
+        Row(
+          children: [
+            Expanded(child: Icon(Icons.beach_access)),
+            Expanded(flex: 4, child: Text(items.spot)),
+          ],
+        ),
       ],
     ),
   );

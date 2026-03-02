@@ -5,13 +5,20 @@ class EventModel {
   final int? id;
   final String namaEvent;
   final String lokasi;
-  EventModel({this.id, required this.namaEvent, required this.lokasi});
+  final String spot;
+  EventModel({
+    this.id,
+    required this.namaEvent,
+    required this.lokasi,
+    required this.spot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
       'nama_event': namaEvent,
       'lokasi': lokasi,
+      'spot': spot,
     };
   }
 
@@ -20,6 +27,7 @@ class EventModel {
       id: map['id'] != null ? map['id'] as int : null,
       namaEvent: map['nama_event'] as String,
       lokasi: map['lokasi'] as String,
+      spot: map['spot'] as String,
     );
   }
 

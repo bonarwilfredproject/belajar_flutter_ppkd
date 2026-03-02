@@ -15,6 +15,9 @@ class _Tugas11ScreenState extends State<Tugas11Screen> {
   GlobalKey<FormState> _formKey = GlobalKey();
   TextEditingController namaEventController = TextEditingController();
   TextEditingController lokasiController = TextEditingController();
+  String? selectedSpot;
+  final List<String> spotList = ["Outdoor", "Indoor"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +52,23 @@ class _Tugas11ScreenState extends State<Tugas11Screen> {
                   },
                   decoration: decorationConstant(hintText: "Masukkan lokasi"),
                 ),
+                SizedBox(height: 16),
+                DropdownButtonFormField(
+                  decoration: decorationConstant(hintText: "Pilih spot"),
+                  validator: (value) =>
+                      value == null ? "Belum pilih spot" : null,
+                  items: spotList
+                      .map(
+                        (spot) =>
+                            DropdownMenuItem(value: spot, child: Text(spot)),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedSpot = value;
+                    });
+                  },
+                ),
                 IconButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -56,6 +76,7 @@ class _Tugas11ScreenState extends State<Tugas11Screen> {
                         EventModel(
                           namaEvent: namaEventController.text,
                           lokasi: lokasiController.text,
+                          spot: selectedSpot!,
                         ),
                       );
                       setState(() {

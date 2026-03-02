@@ -8,7 +8,8 @@ class Tugas7DropDown extends StatefulWidget {
 }
 
 class _Tugas7DropDownState extends State<Tugas7DropDown> {
-  String? selected;
+  String? selectedJenis;
+  List<String> jenisJenis = ["Elektronik", "Pakaian", "Makanan", "Lainnya"];
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +17,23 @@ class _Tugas7DropDownState extends State<Tugas7DropDown> {
       child: Column(
         children: [
           DropdownButton(
-            hint: Text(selected == null ? "Pilih kategori" : "$selected"),
-            value: selected,
-            items: ["Elektronik", "Pakaian", "Makanan", "Lainnya"].map((
-              String value,
-            ) {
+            hint: Text(
+              selectedJenis == null ? "Pilih kategori" : "$selectedJenis",
+            ),
+            value: selectedJenis,
+            items: jenisJenis.map((String value) {
               return DropdownMenuItem(value: value, child: Text(value));
             }).toList(),
             onChanged: (value) {
               setState(() {
-                selected = value;
+                selectedJenis = value;
               });
             },
           ),
           Text(
-            selected == null
+            selectedJenis == null
                 ? "Anda memilih kategori:"
-                : "Anda memilih kategori: $selected",
+                : "Anda memilih kategori: $selectedJenis",
           ),
         ],
       ),

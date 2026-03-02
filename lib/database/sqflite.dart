@@ -15,7 +15,7 @@ class DBHelper {
           'CREATE TABLE siswa (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, kelas TEXT)',
         );
         await db.execute(
-          'CREATE TABLE event (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_event TEXT, lokasi TEXT)',
+          'CREATE TABLE event (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_event TEXT, lokasi TEXT, spot TEXT)',
         );
       },
       onUpgrade: (db, oldVersion, newVersion) async {
@@ -26,7 +26,7 @@ class DBHelper {
         }
         if (oldVersion < 3) {
           await db.execute(
-            'CREATE TABLE event (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_event TEXT, lokasi TEXT)',
+            'CREATE TABLE event (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_event TEXT, lokasi TEXT, spot TEXT)',
           );
         }
       },
