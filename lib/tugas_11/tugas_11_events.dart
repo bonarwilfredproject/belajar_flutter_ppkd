@@ -18,51 +18,53 @@ class _Tugas11EventsState extends State<Tugas11Events> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              SizedBox(
-                width: 164,
-                height: 54,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Tugas11Screen();
-                        },
-                      ),
-                    );
-                  },
-                  child: Row(
-                    children: [
-                      Expanded(flex: 4, child: Text("Buat Event")),
-                      Expanded(child: Icon(Icons.create)),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              FutureBuilder(
-                future: EventController.getAllEvent(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return CircularProgressIndicator();
-                  }
-                  final List<EventModel>? data = snapshot.data;
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: data?.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final items = data?[index];
-                      return Column(
-                        children: [eventTile(items), SizedBox(height: 16)],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 164,
+                  height: 54,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Tugas11Screen();
+                          },
+                        ),
                       );
                     },
-                  );
-                },
-              ),
-            ],
+                    child: Row(
+                      children: [
+                        Expanded(flex: 4, child: Text("Buat Event")),
+                        Expanded(child: Icon(Icons.create)),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16),
+                FutureBuilder(
+                  future: EventController.getAllEvent(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return CircularProgressIndicator();
+                    }
+                    final List<EventModel>? data = snapshot.data;
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: data?.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final items = data?[index];
+                        return Column(
+                          children: [eventTile(items), SizedBox(height: 16)],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
