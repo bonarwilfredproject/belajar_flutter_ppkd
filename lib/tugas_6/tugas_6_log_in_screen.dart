@@ -1,3 +1,6 @@
+import 'package:belajar_flutter_ppkd/database/preferences.dart';
+import 'package:belajar_flutter_ppkd/database/sqflite.dart';
+import 'package:belajar_flutter_ppkd/models/user_model.dart';
 import 'package:belajar_flutter_ppkd/tugas_6/tugas_6_home_screen.dart';
 import 'package:belajar_flutter_ppkd/tugas_6/tugas_6_screen_forgotten_password.dart';
 import 'package:belajar_flutter_ppkd/tugas_6/tugas_6_sign_up_screen.dart';
@@ -11,6 +14,9 @@ class Tugas6LogInScreen extends StatefulWidget {
 }
 
 class _Tugas6LogInScreenState extends State<Tugas6LogInScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   bool seePassword = true;
 
   @override
@@ -28,7 +34,8 @@ class _Tugas6LogInScreenState extends State<Tugas6LogInScreen> {
           SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 49.0),
-            child: TextField(
+            child: TextFormField(
+              controller: emailController,
               style: TextStyle(
                 color: Color(0xff888888),
                 fontWeight: FontWeight.bold,
@@ -59,7 +66,8 @@ class _Tugas6LogInScreenState extends State<Tugas6LogInScreen> {
           SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 49.0),
-            child: TextField(
+            child: TextFormField(
+              controller: passwordController,
               obscureText: seePassword ? true : false,
               obscuringCharacter: "*",
               style: TextStyle(
@@ -92,8 +100,8 @@ class _Tugas6LogInScreenState extends State<Tugas6LogInScreen> {
                     setState(() {});
                   },
                   icon: seePassword
-                      ? Icon(Icons.remove_red_eye)
-                      : Icon(Icons.remove_red_eye_outlined),
+                      ? Icon(Icons.visibility)
+                      : Icon(Icons.visibility_off),
                 ),
                 suffixIconConstraints: BoxConstraints(minWidth: 60),
               ),
@@ -136,14 +144,32 @@ class _Tugas6LogInScreenState extends State<Tugas6LogInScreen> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Tugas6HomeScreen(),
-                        ),
-                        (route) => false,
+                    onPressed: () async {
+                      final UserModel? login = await DBHelper.loginUser(
+                        email: emailController.text,
+                        password: passwordController.text,
                       );
+                      if (login != null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Login berhasil")),
+                        );
+                        await Future.delayed(Duration(seconds: 4));
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Tugas6HomeScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "Login gagal, email atau password tidak terdaftar",
+                            ),
+                          ),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Color(0xffFFFFFF),
@@ -221,6 +247,15 @@ class _Tugas6LogInScreenState extends State<Tugas6LogInScreen> {
               ),
               TextButton(
                 onPressed: () {
+                  DBHelper.registerUser(
+                    UserModel(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Pendaftaran Berhasil")),
+                  );
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => SignUpScreen()),

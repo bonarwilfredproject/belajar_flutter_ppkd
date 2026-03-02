@@ -1,3 +1,4 @@
+import 'package:belajar_flutter_ppkd/database/preferences.dart';
 import 'package:belajar_flutter_ppkd/tugas_10/tugas_10_form.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class Tugas10Konfirmasi extends StatelessWidget {
               Text("Terima Kasih, $namaLengkap dari $kota telah mendaftar"),
               ElevatedButton(
                 onPressed: () {
+                  PreferenceHandler().deleteRegistered();
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(

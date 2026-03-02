@@ -1,3 +1,4 @@
+import 'package:belajar_flutter_ppkd/database/preferences.dart';
 import 'package:belajar_flutter_ppkd/tugas_10/tugas_10_konfirmasi.dart';
 import 'package:flutter/material.dart';
 
@@ -104,6 +105,7 @@ class _Tugas10FormState extends State<Tugas10Form> {
                             actions: [
                               ElevatedButton(
                                 onPressed: () {
+                                  PreferenceHandler().storingRegistered(true);
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(

@@ -1,9 +1,14 @@
+import 'package:belajar_flutter_ppkd/day_17/cr_siswa.dart';
 import 'package:belajar_flutter_ppkd/day_5/scaffold.dart';
 import 'package:belajar_flutter_ppkd/day_7/gambar.dart';
 import 'package:belajar_flutter_ppkd/day_8/latihan.dart';
+import 'package:belajar_flutter_ppkd/database/preferences.dart';
+import 'package:belajar_flutter_ppkd/database/splash_screen.dart';
 import 'package:belajar_flutter_ppkd/tugas2.dart/tugas2.dart';
 import 'package:belajar_flutter_ppkd/tugas_1/tugas_1.dart';
 import 'package:belajar_flutter_ppkd/tugas_10/tugas_10_form.dart';
+import 'package:belajar_flutter_ppkd/tugas_11/tugas_11_events.dart';
+import 'package:belajar_flutter_ppkd/tugas_11/tugas_11_screen.dart';
 import 'package:belajar_flutter_ppkd/tugas_3_flutter/tugas_3_flutter.dart';
 import 'package:belajar_flutter_ppkd/tugas_4_flutter/tugas_4_flutter.dart';
 import 'package:belajar_flutter_ppkd/tugas_5_flutter/tugas_5.dart';
@@ -13,7 +18,9 @@ import 'package:belajar_flutter_ppkd/tugas_8/tugas_8.dart';
 import 'package:belajar_flutter_ppkd/tugas_9/tugas_9_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PreferenceHandler().init();
   runApp(const MyApp());
 }
 
@@ -43,7 +50,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Tugas10Form(),
+      home: Tugas11Events(),
     );
   }
 }
