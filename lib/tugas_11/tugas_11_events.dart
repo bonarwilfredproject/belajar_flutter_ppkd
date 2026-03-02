@@ -53,6 +53,7 @@ class _Tugas11EventsState extends State<Tugas11Events> {
                     final List<EventModel>? data = snapshot.data;
                     return ListView.builder(
                       shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                       itemCount: data?.length,
                       itemBuilder: (BuildContext context, int index) {
                         final items = data?[index];
