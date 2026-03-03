@@ -14,4 +14,23 @@ class EventController {
       return EventModel.fromMap(e);
     }).toList();
   }
+
+  static Future<int> updateEvent(EventModel event) async {
+    final dbs = await DBHelper.db();
+
+    if (event.id == null) {
+      throw Exception("ID Event tidak boleh kosong");
+    }
+    return dbs.update(
+      'event',
+      event.toMap(),
+      where: "id = ?",
+      whereArgs: [event.id],
+    );
+  }
+
+  static Future<int> deleteEvent(int id) async {
+    final dbs = await DBHelper.db();
+    return dbs.delete('event', where: 'id = ?', whereArgs: [id]);
+  }
 }
