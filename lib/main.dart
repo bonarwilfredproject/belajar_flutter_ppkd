@@ -11,6 +11,7 @@ import 'package:belajar_flutter_ppkd/tugas_11/tugas_11_events.dart';
 import 'package:belajar_flutter_ppkd/tugas_11/tugas_11_screen.dart';
 import 'package:belajar_flutter_ppkd/tugas_12/tugas_12_screen.dart';
 import 'package:belajar_flutter_ppkd/tugas_14/views/home_page.dart';
+import 'package:belajar_flutter_ppkd/tugas_15/view/log_in_screen.dart';
 import 'package:belajar_flutter_ppkd/tugas_3_flutter/tugas_3_flutter.dart';
 import 'package:belajar_flutter_ppkd/tugas_4_flutter/tugas_4_flutter.dart';
 import 'package:belajar_flutter_ppkd/tugas_5_flutter/tugas_5.dart';
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: GhibliHomePage(),
+      home: Tugas15LogInScreen(),
     );
   }
 }
