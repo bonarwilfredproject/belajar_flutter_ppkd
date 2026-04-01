@@ -80,6 +80,7 @@ class _GhibliHomePageState extends State<GhibliHomePage> {
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : RefreshIndicator(
+              color: Colors.black,
               onRefresh: () async {
                 await fetchData();
               },

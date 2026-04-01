@@ -1,4 +1,6 @@
 import 'package:belajar_flutter_ppkd/tugas_14/services/ghibli_film_service.dart';
+import 'package:belajar_flutter_ppkd/tugas_14/services/youtube_service.dart';
+import 'package:belajar_flutter_ppkd/tugas_14/views/trailer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/ghibli_film_model.dart';
@@ -53,15 +55,23 @@ class _GhibliDetailPageState extends State<GhibliDetailPage> {
   }
 
   Future<void> playTrailer() async {
-    final query = "${widget.film.title} trailer";
-
-    final url = Uri.parse(
-      "https://www.youtube.com/results?search_query=${Uri.encodeComponent(query)}",
+    final videoId = await YoutubeService.getYoutubeVideoId(
+      "${widget.film.title} trailer",
     );
 
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.platformDefault);
+    if (!mounted) return;
+
+    if (videoId == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Trailer tidak ditemukan")));
+      return;
     }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => TrailerPage(videoId: videoId)),
+    );
   }
 
   @override
